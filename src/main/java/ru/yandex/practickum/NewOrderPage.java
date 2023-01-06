@@ -48,7 +48,6 @@ public class NewOrderPage {
     private final By successCreateOrder = By.className("Order_ModalHeader__3FDaJ");
     private final int STANDARD_TIMEOUT = 5;
 
-
     public NewOrderPage fillClientInfo(String newFirstName,String newLastName,String newAddress,String newPhoneNumber,String newMetro){
         webDriver.findElement(firstName).sendKeys(newFirstName);
         webDriver.findElement(lastName).sendKeys(newLastName);

@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainPage {
@@ -22,8 +21,8 @@ public class MainPage {
     private final By agreeCookie = By.className("App_CookieButton__3cvqF");// Кнопка принятия куки
     private final int STANDARD_TIMEOUT = 5;
 
-    public MainPage open(){
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
+    public MainPage open(String Url){
+        webDriver.get(Url);
         return this;
     }
 
@@ -31,6 +30,7 @@ public class MainPage {
         new WebDriverWait(webDriver, STANDARD_TIMEOUT).until(ExpectedConditions.elementToBeClickable(newOrderButtonTop)).click();
         return new NewOrderPage(webDriver);
     }
+
     public NewOrderPage clickNewOrderButtonMiddle(){
         new WebDriverWait(webDriver, STANDARD_TIMEOUT).until(ExpectedConditions.elementToBeClickable(newOrderButtonMiddle)).click();
         return new NewOrderPage(webDriver);
@@ -41,15 +41,13 @@ public class MainPage {
         return this;
    }
 
-    public List<String> checkQuestionsFaq(){
+    public String checkQuestionFaq(int NumberAnswer){
         List<WebElement> listOfQuestions = webDriver.findElements(questionsFaq);
         List<WebElement> listOfAnswers = webDriver.findElements(answersFaq);
-        List<String> listOfAnswersText = new ArrayList<>();
-        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView(true);", listOfQuestions.get(0));
-        for(int i = 0; i < listOfQuestions.size(); i++){
-            new WebDriverWait(webDriver, STANDARD_TIMEOUT).until(ExpectedConditions.elementToBeClickable(listOfQuestions.get(i))).click();
-            listOfAnswersText.add(new WebDriverWait(webDriver, STANDARD_TIMEOUT).until(ExpectedConditions.visibilityOf(listOfAnswers.get(i))).getText());
-        }
-        return listOfAnswersText;
+        String AnswerText;
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView(true);", listOfQuestions.get(NumberAnswer));
+        new WebDriverWait(webDriver, STANDARD_TIMEOUT).until(ExpectedConditions.elementToBeClickable(listOfQuestions.get(NumberAnswer))).click();
+        AnswerText = new WebDriverWait(webDriver, STANDARD_TIMEOUT).until(ExpectedConditions.visibilityOf(listOfAnswers.get(NumberAnswer))).getText();
+        return AnswerText;
     }
 }

@@ -10,7 +10,7 @@ public class CreateOrderOnChrome extends TestBaseOnChrome {
     public void checkCreateOrderButtonTop(){
         boolean isCreateOrder =
                 new MainPage(driverChrome)
-                    .open()
+                    .open(MAIN_PAGE_URL)
                     .clickAgreeCookie()
                     .clickNewOrderButtonTop()
                     .fillClientInfo("Эвелина","Тамински","Левитана 80","89568912597","Черкизовская")
@@ -26,7 +26,7 @@ public class CreateOrderOnChrome extends TestBaseOnChrome {
     public void checkCreateOrderButtonMiddle(){
         boolean isCreateOrder =
                 new MainPage(driverChrome)
-                    .open()
+                    .open(MAIN_PAGE_URL)
                     .clickAgreeCookie()
                     .clickNewOrderButtonMiddle()
                     .fillClientInfo("Татьяна","Давлатова","Чайковского 35 корп. 2","+79008552217","Охотный Ряд")

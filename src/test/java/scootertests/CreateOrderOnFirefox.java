@@ -11,7 +11,7 @@ public class CreateOrderOnFirefox extends TestBaseOnFirefox{
     public void checkCreateOrderButtonTop(){
         boolean isCreateOrder =
                 new MainPage(driverFirefox)
-                    .open()
+                    .open(MAIN_PAGE_URL)
                     .clickAgreeCookie()
                     .clickNewOrderButtonTop()
                     .fillClientInfo("Артур","Давлетшин","Смольная 7","8(956)89-12-597","Черкизовская")
@@ -26,7 +26,7 @@ public class CreateOrderOnFirefox extends TestBaseOnFirefox{
     public void checkCreateOrderButtonMiddle(){
         boolean isCreateOrder =
                 new MainPage(driverFirefox)
-                    .open()
+                    .open(MAIN_PAGE_URL)
                     .clickAgreeCookie()
                     .clickNewOrderButtonMiddle()
                     .fillClientInfo("Дмитрий","Маликов","Цветочная 8","+79118952217","Комсомольская")
